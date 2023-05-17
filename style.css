@@ -10,34 +10,15 @@ body {
   margin: 0 auto;
 }
 
-div.header {
+.city-Header-Wrapper {
   display: flex;
   justify-content: space-between;
   text-align: center;
   margin: 40px 0;
 }
 
-.group {
+.city-Header {
   padding: 4px;
-}
-
-.group:nth-child(1) {
-  width: 35%;
-  background-color: #f0155e;
-}
-.group:nth-child(2) {
-  width: 35%;
-  background-color: #f1c232;
-}
-.group:nth-child(3) {
-  width: 35%;
-  background-color: #3c79d8;
-}
-
-.button-area {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 10px;
 }
 
 button {
@@ -50,24 +31,11 @@ button {
   width: 150px;
   border-radius: 8px;
 }
-.input-area {
-  display: flex;
-}
-
-.left {
-  width: 60%;
-  border: #3c79d8;
-}
 
 #city-container {
   width: 40%;
   text-align: right;
-}
-
-.input-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 10px;
+  margin-top: 100px;
 }
 
 .city-box {
@@ -100,10 +68,6 @@ button {
   min-width: 200px;
   padding: 4px;
   border-right: 2px solid rgb(126, 117, 117, 0.8);
-}
-
-.name {
-  color: #c0b8b8;
 }
 
 .selected-parcel-container {
@@ -148,9 +112,9 @@ input {
 .action-button-container {
   display: flex;
   justify-content: space-between;
-  margin: 0 10px;
   color: #fff;
-  margin: 40px 0;
+  margin: 40px 10px;
+  margin-top: 95px;
 }
 .input-label-value-parent {
   display: flex;
@@ -183,7 +147,9 @@ input {
   display: flex;
   flex-direction: column;
   align-items: start;
+  border: 1px solid #fff;
   justify-content: center;
+  padding: 50px;
   gap: 4px;
 }
 

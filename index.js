@@ -1,9 +1,23 @@
-
-// initialize selected parcel
+//  initialize selected parcel
 let selectedParcel = null;
 
+const Container = document.querySelector(".container");
+const cityHeaderWrapper = document.createElement("div");
+cityHeaderWrapper.classList.add("city-Header-Wrapper");
+for (const city in CITY_COLOR) {
+  const color1 = CITY_COLOR[city];
+  const cityHeader = document.createElement("div");
+  cityHeader.classList.add("city-Header");
+  cityHeader.style.backgroundColor = color1;
+  cityHeader.textContent = city;
+  cityHeader.style.width = "100%";
+  cityHeaderWrapper.appendChild(cityHeader);
+}
+Container.appendChild(cityHeaderWrapper);
+
 /*********************************  This is to display cities on top   ****************************************** */
-const cityContainer = document.querySelector("#city-container");
+const cityContainer = document.createElement("div");
+cityContainer.classList.add("city-container");
 
 // Create city boxes
 for (const city in CITY_COLOR) {
@@ -21,7 +35,8 @@ for (const city in CITY_COLOR) {
 }
 
 /*********************************  This is to display selected parcel   ****************************************** */
-const parcelContainer = document.querySelector(".parcel-wrapper");
+const parcelContainer = document.createElement("div");
+parcelContainer.classList.add("parcel-wrapper");
 
 const selectedParcelContainer = document.createElement("div");
 selectedParcelContainer.classList.add("selected-parcel-container");
@@ -36,7 +51,7 @@ selectedParcelValue.classList.add("selected-parcel-value");
 
 selectedParcelContainer.appendChild(selectedParcelLabel);
 selectedParcelContainer.appendChild(selectedParcelValue);
-
+cityHeaderWrapper.after(parcelContainer);
 parcelContainer.after(selectedParcelContainer);
 
 /*********************************  This is to display all parcels     ****************************************** */
@@ -65,7 +80,12 @@ data.forEach((parcel) => {
   // Add click event listener to each sequence
   sequenceElement.addEventListener("click", () => {
     selectedParcelValue.textContent = name;
-    selectedParcel = parcel;
+    if (selectedParcel) {
+      selectedParcel = null;
+      selectedParcelValue.textContent = "";
+    } else {
+      selectedParcel = parcel;
+    }
   });
 });
 
@@ -120,6 +140,8 @@ addButtonAfter.addEventListener("click", () => {
       data.splice(index + 1, 0, newParcel);
       refreshParcels();
     }
+  } else {
+    alert("Please select a parcel to add after");
   }
 });
 
@@ -139,6 +161,8 @@ addButtonBefore.addEventListener("click", () => {
       data.splice(index, 0, newParcel);
       refreshParcels();
     }
+  } else {
+    alert("Please select a parcel to add before");
   }
 });
 
@@ -158,6 +182,8 @@ replaceButton.addEventListener("click", () => {
       data[index] = updatedParcel;
       refreshParcels();
     }
+  } else {
+    alert("Please select a parcel to replace");
   }
 });
 
@@ -171,6 +197,8 @@ deleteButton.addEventListener("click", () => {
       data.splice(index, 1);
       refreshParcels();
     }
+  } else {
+    alert("Please select a parcel to delete");
   }
 });
 
@@ -185,7 +213,7 @@ refreshButton.addEventListener("click", () => {
 const showFinalResultButton = document.createElement("button");
 showFinalResultButton.textContent = "Final Result";
 showFinalResultButton.addEventListener("click", () => {
-  console.log("updated date:", data);
+  console.log("updated data:", data);
 });
 
 // Append all buttons to action container
